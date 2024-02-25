@@ -7,17 +7,9 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
     behaviors {
-        tab_esc_ctrl: tab_esc_ctrl {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAB_ESC_CTRL";
-            #binding-cells = <0>;
-            bindings = <&mt LCTRL ESC>, <&kp TAB>;
-        };
-
         hr: hr {
             compatible = "zmk,behavior-hold-tap";
             label = "HR";
@@ -53,9 +45,9 @@
             flavor = "tap-preferred";
         };
 
-        sc: sc {
+        sftcap: sftcap {
             compatible = "zmk,behavior-tap-dance";
-            label = "SC";
+            label = "SFTCAP";
             #binding-cells = <0>;
             bindings = <&kp LEFT_SHIFT>, <&kp CAPSLOCK>;
         };
@@ -127,7 +119,7 @@
 &kp Q           &kp W           &kp E         &kp R                &kp T         &kp Y         &kp U                 &kp I        &kp O       &kp P
 &hr LEFT_GUI A  &hr LEFT_ALT S  &hr LCTRL D   &hr250 LEFT_SHIFT F  &kp G         &kp H         &hr250 RIGHT_SHIFT J  &hr RCTRL K  &hr RALT L  &hr RIGHT_GUI SEMICOLON
 &kp Z           &kp X           &kp C         &kp V                &kp B         &kp N         &kp M                 &kp COMMA    &kp DOT     &kp FSLH
-                                &kp LEFT_GUI  &ltq 2 SPACE         &ltq 1 TAB    &ltq 1 ENTER  &ltq 2 BACKSPACE      &sc
+                                &kp LEFT_GUI  &ltq 2 SPACE         &ltq 1 TAB    &ltq 1 ENTER  &ltq 2 BACKSPACE      &sftcap
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RIGHT LEFT>;
@@ -137,7 +129,7 @@
             label = "NUMBER";
             bindings = <
 &kp N1        &kp N2        &kp N3     &kp N4          &kp N5        &kp N6              &kp N7         &kp N8       &kp N9         &kp N0
-&kp LEFT_GUI  &kp LEFT_ALT  &kp LCTRL  &kp LEFT_SHIFT  &kp ESCAPE    &kp LEFT            &kp DOWN       &kp UP       &kp RIGHT      &none
+&kp LEFT_GUI  &kp LEFT_ALT  &kp LCTRL  &kp LEFT_SHIFT  &kp ESCAPE    &kp LEFT            &kp DOWN       &kp UP       &kp RIGHT      &trans
 &kp F1        &kp F2        &kp F3     &kp F4          &kp F12       &kp LG(LEFT_ARROW)  &kp PAGE_DOWN  &kp PAGE_UP  &kp RG(RIGHT)  &none
                             &trans     &mo 3           &trans        &trans              &mo 3          &trans
             >;
@@ -149,8 +141,8 @@
             label = "SYMBOL";
             bindings = <
 &kp EXCLAMATION  &kp AT            &kp HASH       &kp DOLLAR         &kp PERCENT        &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp LEFT_GUI     &kp LEFT_ALT      &kp LCTRL      &kp LEFT_SHIFT     &kp ESCAPE         &kp PLUS   &kp MINUS      &kp SLASH     &kp BACKSLASH         &kp SINGLE_QUOTE
-&kp LEFT_BRACE   &kp LEFT_BRACKET  &kp LG(LA(C))  &kp RIGHT_BRACKET  &kp RIGHT_BRACE    &kp EQUAL  &kp UNDER      &kp GRAVE     &kp TILDE             &kp DOUBLE_QUOTES
+&kp LEFT_GUI     &kp LEFT_ALT      &kp LCTRL      &kp LEFT_SHIFT     &kp ESCAPE         &kp PLUS   &kp MINUS      &kp GRAVE     &kp PIPE              &kp SINGLE_QUOTE
+&kp LEFT_BRACE   &kp LEFT_BRACKET  &kp LG(LA(C))  &kp RIGHT_BRACKET  &kp RIGHT_BRACE    &kp EQUAL  &kp UNDER      &kp TILDE     &kp BACKSLASH         &kp DOUBLE_QUOTES
                                    &trans         &trans             &trans             &trans     &trans         &trans
             >;
 
@@ -158,12 +150,12 @@
         };
 
         ble {
-            label = "BLE";
+            label = "function";
             bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4    &none  &none  &none   &none  &none
-&bootloader   &none         &kp C_VOL_UP       &bt BT_CLR    &out OUT_TOG    &none  &none  &none   &none  &none
-&none         &none         &kp C_VOLUME_DOWN  &out OUT_USB  &out OUT_BLE    &none  &none  &none   &none  &none
-                            &none              &none         &none           &none  &none  &trans
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2       &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans  &trans
+&trans        &trans        &kp C_VOL_UP       &mkp LCLK     &kp C_PREV      &trans  &trans  &trans  &trans  &trans
+&bt BT_CLR    &trans        &kp C_VOLUME_DOWN  &mkp RCLK     &kp C_NEXT      &trans  &trans  &trans  &trans  &bootloader
+                            &trans             &trans        &trans          &trans  &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RIGHT LEFT>;
