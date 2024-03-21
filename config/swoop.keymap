@@ -8,6 +8,8 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 
+&sk { quick-release; };
+
 / {
     behaviors {
         hr: hr {
@@ -17,7 +19,7 @@
 
             #binding-cells = <2>;
             quick-tap-ms = <180>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <220>;
             global-quick-tap;
             flavor = "tap-preferred";
         };
@@ -31,18 +33,6 @@
             global-quick-tap;
             tapping-term-ms = <200>;
             quick-tap-ms = <180>;
-        };
-
-        hr250: hr250 {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HR250";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            quick-tap-ms = <180>;
-            tapping-term-ms = <250>;
-            global-quick-tap;
-            flavor = "tap-preferred";
         };
 
         sftcap: sftcap {
@@ -116,10 +106,10 @@
         base {
             label = "Base";
             bindings = <
-&kp Q           &kp W           &kp E         &kp R                &kp T         &kp Y         &kp U                 &kp I        &kp O       &kp P
-&hr LEFT_GUI A  &hr LEFT_ALT S  &hr LCTRL D   &hr250 LEFT_SHIFT F  &kp G         &kp H         &hr250 RIGHT_SHIFT J  &hr RCTRL K  &hr RALT L  &hr RIGHT_GUI SEMICOLON
-&kp Z           &kp X           &kp C         &kp V                &kp B         &kp N         &kp M                 &kp COMMA    &kp DOT     &kp FSLH
-                                &kp LEFT_GUI  &ltq 2 SPACE         &ltq 1 TAB    &ltq 1 ENTER  &ltq 2 BACKSPACE      &sftcap
+&kp Q           &kp W           &kp E         &kp R             &kp T         &kp Y         &kp U              &kp I        &kp O       &kp P
+&hr LEFT_GUI A  &hr LEFT_ALT S  &hr LCTRL D   &hr LEFT_SHIFT F  &kp G         &kp H         &hr RIGHT_SHIFT J  &hr RCTRL K  &hr RALT L  &hr RIGHT_GUI SEMICOLON
+&kp Z           &kp X           &kp C         &kp V             &kp B         &kp N         &kp M              &kp COMMA    &kp DOT     &kp FSLH
+                                &kp LEFT_GUI  &ltq 2 SPACE      &ltq 1 TAB    &ltq 1 ENTER  &ltq 2 BACKSPACE   &sftcap
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RIGHT LEFT>;
@@ -128,10 +118,10 @@
         number {
             label = "NUMBER";
             bindings = <
-&kp N1        &kp N2        &kp N3     &kp N4          &kp N5        &kp N6              &kp N7         &kp N8       &kp N9         &kp N0
-&kp LEFT_GUI  &kp LEFT_ALT  &kp LCTRL  &kp LEFT_SHIFT  &kp ESCAPE    &kp LEFT            &kp DOWN       &kp UP       &kp RIGHT      &kp HOME
-&kp F1        &kp F2        &kp F3     &kp F4          &kp F12       &kp LG(LEFT_ARROW)  &kp PAGE_DOWN  &kp PAGE_UP  &kp RG(RIGHT)  &kp END
-                            &trans     &mo 3           &trans        &trans              &mo 3          &trans
+&kp N1        &kp N2        &kp N3     &kp N4          &kp N5        &kp N6              &kp N7        &kp N8            &kp N9         &kp N0
+&sk LEFT_GUI  &sk LEFT_ALT  &sk LCTRL  &sk LEFT_SHIFT  &kp ESCAPE    &kp LEFT            &kp DOWN      &kp UP            &kp RIGHT      &trans
+&kp F1        &kp F2        &kp F3     &kp F4          &kp F12       &kp LG(LEFT_ARROW)  &kp LG(DOWN)  &kp LG(UP_ARROW)  &kp RG(RIGHT)  &trans
+                            &trans     &mo 3           &trans        &trans              &mo 3         &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RIGHT LEFT>;
@@ -141,7 +131,7 @@
             label = "SYMBOL";
             bindings = <
 &kp EXCLAMATION  &kp AT            &kp HASH       &kp DOLLAR         &kp PERCENT        &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp LEFT_GUI     &kp LEFT_ALT      &kp LCTRL      &kp LEFT_SHIFT     &kp ESCAPE         &kp PLUS   &kp MINUS      &kp GRAVE     &kp PIPE              &kp SINGLE_QUOTE
+&sk LEFT_GUI     &sk LEFT_ALT      &sk LCTRL      &sk LEFT_SHIFT     &kp ESCAPE         &kp PLUS   &kp MINUS      &kp GRAVE     &kp PIPE              &kp SINGLE_QUOTE
 &kp LEFT_BRACE   &kp LEFT_BRACKET  &kp LG(LA(C))  &kp RIGHT_BRACKET  &kp RIGHT_BRACE    &kp EQUAL  &kp UNDER      &kp TILDE     &kp BACKSLASH         &kp DOUBLE_QUOTES
                                    &trans         &trans             &trans             &trans     &trans         &trans
             >;
