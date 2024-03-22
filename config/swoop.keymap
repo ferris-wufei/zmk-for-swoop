@@ -98,6 +98,12 @@
             key-positions = <12 11>;
             timeout-ms = <30>;
         };
+
+        right_shift {
+            bindings = <&kp RIGHT_SHIFT>;
+            key-positions = <17 18>;
+            timeout-ms = <30>;
+        };
     };
 
     keymap {
@@ -106,10 +112,10 @@
         base {
             label = "Base";
             bindings = <
-&kp Q           &kp W           &kp E         &kp R             &kp T         &kp Y         &kp U              &kp I        &kp O       &kp P
-&hr LEFT_GUI A  &hr LEFT_ALT S  &hr LCTRL D   &hr LEFT_SHIFT F  &kp G         &kp H         &hr RIGHT_SHIFT J  &hr RCTRL K  &hr RALT L  &hr RIGHT_GUI SEMICOLON
-&kp Z           &kp X           &kp C         &kp V             &kp B         &kp N         &kp M              &kp COMMA    &kp DOT     &kp FSLH
-                                &kp LEFT_GUI  &ltq 2 SPACE      &ltq 1 TAB    &ltq 1 ENTER  &ltq 2 BACKSPACE   &sftcap
+&kp Q  &kp W  &kp E         &kp R         &kp T         &kp Y         &kp U             &kp I      &kp O    &kp P
+&kp A  &kp S  &kp D         &kp F         &kp G         &kp H         &kp J             &kp K      &kp L    &kp SEMI
+&kp Z  &kp X  &kp C         &kp V         &kp B         &kp N         &kp M             &kp COMMA  &kp DOT  &kp FSLH
+              &kp LEFT_GUI  &ltq 2 SPACE  &ltq 1 TAB    &ltq 1 ENTER  &ltq 2 BACKSPACE  &sftcap
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RIGHT LEFT>;
